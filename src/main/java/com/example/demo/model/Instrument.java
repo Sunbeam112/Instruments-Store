@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -30,6 +31,8 @@ public class Instrument {
 
     @Column(name = "price", nullable = false)
     private Double price;
+
+
 
     @OneToOne(mappedBy = "instrument", cascade = CascadeType.REMOVE, optional = false, orphanRemoval = true)
     private Inventory inventory;

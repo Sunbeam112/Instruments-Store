@@ -3,12 +3,15 @@ package com.example.demo.api.controller.auth;
 
 import com.example.demo.api.RegistrationBody;
 import com.example.demo.exception.UserAlreadyExistsException;
+import com.example.demo.model.LocalUser;
 import com.example.demo.model.LoginBody;
 import com.example.demo.model.LoginResponse;
 import com.example.demo.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -43,4 +46,8 @@ public class AuthenticationController {
         }
     }
 
+    @GetMapping("/me")
+    public LocalUser getLoggedInUserProfile(@AuthenticationPrincipal LocalUser user) {
+        return user;
+    }
 }

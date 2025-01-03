@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -19,12 +20,26 @@ public class Address {
     @Column(name = "city", nullable = false, length = 128)
     private String city;
 
+
+
     @Column(name = "country", nullable = false, length = 64)
     private String country;
 
+    @JsonIgnore
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private LocalUser user;
+
+    @Column(name = "zipcode", nullable = false)
+    private String zipcode;
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
 
     public LocalUser getUser() {
         return user;
