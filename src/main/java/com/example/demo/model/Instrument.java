@@ -26,7 +26,7 @@ public class Instrument {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
+    @Column(name = "description", length = 4096)
     private String description;
 
     @Column(name = "price", nullable = false)
